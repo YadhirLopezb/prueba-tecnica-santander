@@ -1,0 +1,25 @@
+<div class="container dm-border arriba">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Imagen</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let pokemon of pokemons?.results | slice: (page-1) * pageSize : page * pageSize; index as i">
+                <td>
+                    <span *ngIf="page==1">{{(i+1)}}</span>
+                    <span *ngIf="page>1">{{((page-1)*10)+(i+1)}}</span>
+                </td>
+                <td>{{pokemon.name}}</td>
+                <td *ngIf="pokemon.url">
+                    <img src="{{imagen(pokemon.url)}}" class="img-thumbnail img" alt="Responsive image">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [maxSize]="10" [boundaryLinks]="true" [pageSize]="pageSize" class="d-flex justify-content-center"></ngb-pagination>
+</div>
