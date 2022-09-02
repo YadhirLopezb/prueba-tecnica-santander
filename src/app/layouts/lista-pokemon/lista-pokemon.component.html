@@ -9,14 +9,14 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let pokemon of pokemons?.results | slice: (page-1) * pageSize : page * pageSize; index as i">
+            <tr *ngFor="let pokemon of pokemons | slice: (page-1) * pageSize : page * pageSize; index as i">
                 <td>
                     <span *ngIf="page==1">{{(i+1)}}</span>
                     <span *ngIf="page>1">{{((page-1)*10)+(i+1)}}</span>
                 </td>
                 <td>{{pokemon.name}}</td>
-                <td *ngIf="pokemon.url">
-                    <img src="{{imagen(pokemon.url)}}" class="img-thumbnail img" alt="Responsive image">
+                <td *ngIf="pokemon">
+                    <img src="{{pokemon.sprites?.other?.dream_world?.front_default}}" class="img-thumbnail img" alt="Responsive image">
                 </td>
             </tr>
         </tbody>
