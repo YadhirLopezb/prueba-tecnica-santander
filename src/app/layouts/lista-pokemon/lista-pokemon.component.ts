@@ -20,6 +20,7 @@ export class ListaPokemonComponent implements OnInit {
     //recolecto el primer json
     this.pokemonService.getPokemons()
     .subscribe((pokemons:Pokemons)=> {
+      this.collectionSize=pokemons.results.length;
       //por cada pokemon en result busco en la url
       pokemons.results.forEach((pokemon: Poke) =>{
         this.pokemonService.getJsonConImagen(pokemon.url!)
